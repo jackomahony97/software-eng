@@ -1,3 +1,9 @@
+/**
+* Main acts as an intrface to all the components of the calculator
+* @author Jack O Mahony (117498152)
+* @date 13/11/2019
+*/
+
 cmake_minimum_required(VERSION 3.15)
 project(calc C)
 
