@@ -1,5 +1,5 @@
 /**
-* Main acts as an intrface to all the components of the calculator
+* Main acts as an interface to all the components of the calculator
 * @author Jack O Mahony (117498152)
 * @date 13/11/2019
 */
@@ -14,28 +14,32 @@
 
 int main( )
 {
-    char path[100];
-    char line[1024];
-    FILE *infile, *outfile;
+    /**
+    * Main function which reads input from file and writes solution to solution_file.txt
+    * @return 0 Integer
+    */
+    char path[100]; /** file path */
+    char line[1024]; /** line buffer */
+    FILE *infile, *outfile; 
 
-    mkdir("../temp"); //make a directory
-    printf( "Enter a path :");
-    scanf("%s", path); // needs to be ../example.txt
-    infile = fopen(path,"r");
+    mkdir("../temp"); /** make a directory */
+    printf( "Enter a path :"); 
+    scanf("%s", path); /** get file path from user (testing ../example.txt) */
+    infile = fopen(path,"r"); /** open input file (read only) */
 
-    while(fgets(line,sizeof (line),infile)!= NULL)  {
-        outfile = fopen("../temp/input.txt", "w");
-        fprintf(outfile, "%s\n", line);
-        fclose(outfile);
-        tokenizer();
-        infix2postfix();
-        codegenerator();
-        virtualmachine();
-        remove("../temp/input.txt");
-        remove("../temp/tokenizer.txt");
-        remove("../temp/postfix.txt");
-        remove("../temp/instructions.txt");
+    while(fgets(line,sizeof (line),infile)!= NULL)  { /** for each line in input file */
+        outfile = fopen("../temp/input.txt", "w"); /** open output file (write only) */
+        fprintf(outfile, "%s\n", line); /** write line to output file  */
+        fclose(outfile); /** close output file */
+        tokenizer(); /** call tokenizer() */
+        infix2postfix(); /** call infix2postfix() */
+        codegenerator(); /** call codegenerator */
+        virtualmachine(); /** call virtualmachine */
+        remove("../temp/input.txt"); /** remove file */
+        remove("../temp/tokenizer.txt"); /** remove file */
+        remove("../temp/postfix.txt"); /** remove file */
+        remove("../temp/instructions.txt"); /** remove file */
     }
-    fclose(infile);
+    fclose(infile); /** close input file */
     return 0;
 }
