@@ -1,3 +1,4 @@
+
 //
 // Created by jacko on 20/11/2019.
 //
@@ -14,8 +15,8 @@ void codegenerator() {
     int result;
     char loadnum[100] = "LOADNUM, ";
 
-    infile = fopen("../temp/postfix.txt", "r");
-    outfile = fopen("../temp/instructions.txt", "w+");
+    infile = fopen("./temp/postfix.txt", "r");
+    outfile = fopen("./temp/instructions.txt", "w+");
 
     if (infile == NULL) {
         printf("ERROR: Unable To Access Postfix File\n");
