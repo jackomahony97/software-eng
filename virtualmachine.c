@@ -18,8 +18,8 @@
 
 #define STACK_MAX 256 /** Max size of stack (overflow) */
 
-#define INPUT_FILE "../temp/instructions.txt" /** Location of file */
-#define OUTPUT_FILE "../temp/solutions.txt" /** Location of file */
+#define INPUT_FILE "./temp/instructions.txt" /** Location of file */
+#define OUTPUT_FILE "./temp/solutions.txt" /** Location of file */
 
 
 int running = 1; /** Keep track of whether HLT(end of instructions) is reached */
@@ -90,7 +90,7 @@ void write2file(float res) {
     * @param res Integer the value to be written to file
     */
     char filename[] = OUTPUT_FILE; /** Location of file */
-    FILE *file = fopen ( filename, "a" ); /** Open file */
+    FILE *file = fopen ( filename, "w+" ); /** Open file */
     if (res-(int)res == 0) { /** Check if integer */
         fprintf(file, "%d\n", (int)res); /** Write to file (integer)*/
     } else {
@@ -185,21 +185,20 @@ int virtualmachine() {
             substr = strtok(line,", "); /** Deliminator  ", " */
             while(substr!= NULL){ /** Iterate through substring */
                 if (strcmp(substr, "\n")) { /** Check if empty */
-                    if (isdigit(*substr) == 1) { /** If its a digit */
-                        program[i] = atof(substr); /** Add instruction to array program */
+                    if (isdigit(*substr) == 0) { /** If its a digit */
+                        program[i] = checker(substr); /** Add instruction to array program */
                         i++; /** Increment counter for index in array program */
                     } else { /** Not a digit */
-                        program[i] = checker(substr); /** Convert to instruction enum */
+
+                        program[i] = atof(substr); /** Convert to instruction enum */
                         i++; /** Increment counter for index in array program */
                     }
                 }
                 substr = strtok(NULL, ", "); /** Next line */
             }
-
             eval(program[ip]); /** Call eval on every iteration with instruction */
             ip++; /** Increment the instruction pointer */
         }
-
         fclose(file); /** Close file */
     }
     else {
