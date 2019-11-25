@@ -46,8 +46,8 @@ int infix2postfix(void)
     stk.top=-1;
     FILE *infile,*outfile;
     char expr[60],*e, x,c;
-    infile = fopen("../temp/tokenizer.txt","r");
-    outfile= fopen("../temp/postfix.txt","w");
+    infile = fopen("./temp/tokenizer.txt","r");
+    outfile= fopen("./temp/postfix.txt","w+");
     if (infile) {
         while ((c = getc(infile)) != EOF) {
             if ( (isalnum(c)) || (c == '.') ) {
