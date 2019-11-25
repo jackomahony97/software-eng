@@ -19,7 +19,7 @@
 #define STACK_MAX 256 /** Max size of stack (overflow) */
 
 #define INPUT_FILE "../temp/instructions.txt" /** Location of file */
-#define OUTPUT_FILE "../solutions.txt" /** Location of file */
+#define OUTPUT_FILE "../temp/solutions.txt" /** Location of file */
 
 
 int running = 1; /** Keep track of whether HLT(end of instructions) is reached */
