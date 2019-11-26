@@ -1,6 +1,3 @@
-//
-// Created by jacko on 20/11/2019.
-//
 /**
 * The infix2postfix program reads an input file of tokenizer and convert them to postfix format using a stack and writes the result to an postfix file.
 * @author Hoang Anh Mai (117101156)
