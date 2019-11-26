@@ -1,3 +1,8 @@
+/**
+* The tokeniser reads in a line of calculation, removes invalid characters ans checks for syntax errors, before printing to an output file.
+* @author Mark O'Gorman
+* @date 13/11/2019
+*/
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -5,7 +10,7 @@
 #include <string.h>
 
 
-bool checkBrackets(char line[]){
+bool checkBrackets(char line[]){// check syntax for brackets
     int openBrackets = 0;
     int closeBrackets = 0;
     for(int i = 0; line[i]; i++){
@@ -16,7 +21,7 @@ bool checkBrackets(char line[]){
             closeBrackets += 1;
         }
     }
-    if (openBrackets == closeBrackets){
+    if (openBrackets == closeBrackets){//check syntax for brackets
        return true;
     }
     else{
@@ -24,7 +29,7 @@ bool checkBrackets(char line[]){
     }
 }
 
-bool checkDecimals(char line[]){
+bool checkDecimals(char line[]){//check syntax for decimal places
     int decimalCount = 0;
     for(int i = 0; line[i]; i++){
         if (line[i] == '.') {
@@ -42,7 +47,7 @@ bool checkDecimals(char line[]){
     return true;
 }
 
-bool checkOperators(char line[]){
+bool checkOperators(char line[]){// check syntax for operators
 
     for(int i = 0; line[i]; i++){
         if (line[i] == '+'
@@ -85,7 +90,7 @@ int removeIllegalChars(char line[]){
 return 0;
 }
 
-void printTokensToNewLine(char line[], FILE *outfile){
+void printTokensToNewLine(char line[], FILE *outfile){ // prints to the output file, splitting the string onto tokens on one new line per token
     for(int i = 0; line[i]; i++){
             char newline = '\n';
             if (line[i] == '+'
@@ -110,7 +115,7 @@ void printTokensToNewLine(char line[], FILE *outfile){
         }
 }
 
-bool checkSyntax(char line[]){
+bool checkSyntax(char line[]){ // calls functions to check operator, bracket and decimal place syntax
     if (checkOperators(line)
         &&checkBrackets(line)
         &&checkDecimals(line)
@@ -140,7 +145,7 @@ void append(char subject[], const char insert[], int pos) {
     // deallocate buf[] here, if used malloc()
 }
 
-int fixDecimals(char line[]){
+int fixDecimals(char line[]){// fixes the cases "123." to "123.0" and ".123" to "0.123"
     char str[] = "0";
     for(int i = 0; line[i]; i++){
         if (line[i] == '.'){
