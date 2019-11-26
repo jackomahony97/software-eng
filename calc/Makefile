@@ -10,4 +10,6 @@ clean:
 	@rm ./maintest # Remove maintest file, allows program to be immediately rerun
 
 test:
-	
+	@gcc test.c -o test -lm # Compile programs
+	@./test # Run test
+
