@@ -1,22 +1,4 @@
-Skip to content
- 
-Search or jump to…
 
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@markog1999 
-1
-0 0 jackomahony97/software-eng
- Code  Issues 0  Pull requests 0  Actions  Projects 0  Wiki  Security  Insights
-software-eng/tokenizer.c
-@markog1999 markog1999 Add files via upload
-b5125cb 1 minute ago
-@markog1999 @jackomahony97
-205 lines (185 sloc)  5.38 KB
-  
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -221,16 +203,3 @@ int tokenizer(){
         return 1;
     }
 }
-
-© 2019 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
