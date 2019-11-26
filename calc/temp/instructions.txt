@@ -1,0 +1,4 @@
+LOADNUM, 2,
+LOADNUM 5,
+MUL,
+HLT,
