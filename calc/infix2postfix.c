@@ -15,13 +15,14 @@
 struct stack { char items[STKSZ]; int top;} stk;
 
 //Function to push element to the stack if the stack is full and push() is called print out overflow error.
-void push(char ele)
+int push(char ele)
 {
     if (stk.top + 1 == STKSZ) {
         printf("\n Stack Overflow!\n");
-        exit(1);
+        return 1;
     }
     stk.items[++stk.top] = ele;
+    return 0;
 }
 
 //Function to pop element to the stack if there is no element left and pop() is called print out underflow error.
