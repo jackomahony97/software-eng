@@ -1,5 +1,6 @@
 /**
 * Main acts as an interface to all the components of the calculator
+* @author everyone
 * @date 26/11/2019
 */
 
