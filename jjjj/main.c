@@ -55,7 +55,7 @@ int main( )
 		break;
 		}
 	if(result==0) {
-		printf("Calculated. Please check result in ./temp/solutions.txt\n");
+		printf("Calculated. Please check result in: ./temp/solutions.txt. \n");
 			}
 	else {
 		printf("Error in Virtual Machine file.");
