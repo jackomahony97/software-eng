@@ -2,10 +2,34 @@
 #include "infix2postfix.c"
 #include "virtualmachine.c"
 #include "math.h"
+#include "tokenizer.c"
+#include <stdbool.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 
 
 TESTS {
+	//tokenizer (syntax checks)
+	ok(checkBrackets("1+2") == true, "correct brackets");
+	ok(checkBrackets("(1+2") == false, "Missing right bracket");
+	ok(checkBrackets("(1+2") == false, "Missing left bracket");
+	ok(checkBrackets("1+2") == true, "no brackets");
+
+	ok(checkDecimals("1.1") == true, "correct decimals");
+	ok(checkDecimals("1.1.1") == false, "too many decimals");
+	ok(checkDecimals("1..1") == false, "adjacent decimals");
+	ok(checkDecimals("1+2") == true, "no decimals");
+
+	ok(checkOperators("1+1") == true, "correct addition");
+	ok(checkOperators("1+1") == true, "correct subtraction");
+	ok(checkOperators("1+1") == true, "correct addition");
+	ok(checkOperators("1+1") == true, "correct addition");
+	ok(checkOperators("1+1") == true, "correct addition");
+	ok(checkOperators("1++1") == false, "Adjacent operators");
+	ok(checkOperators("1+*1") == false, "Adjacent operators, mixed");
+	ok(checkOperators("1*") == false, "Trailing operator");
         // infix2postfix
         ok (push(1)==0, "push successful test");
         ok (pop(1)!=NULL, "pop successful test");
@@ -24,5 +48,6 @@ TESTS {
 	ok (write2file(1.2) == 0, "succesful");
 	ok (eval(1) == 0, "succesful");
 	ok (eval(1) != 0, "unsuccesful");
+	
         
 }
