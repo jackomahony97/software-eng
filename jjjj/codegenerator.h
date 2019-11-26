@@ -8,6 +8,6 @@
 #define CALC_CODEGENERATOR_H
 
 /** Method defintion*/
-void codegenerator(void);
+int codegenerator(void);
 
 #endif //CALC_CODEGENERATOR_H
