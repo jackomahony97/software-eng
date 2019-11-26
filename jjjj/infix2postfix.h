@@ -8,6 +8,6 @@
 #define CALC_INFIX2POSTFIX_H
 
 /** Method definition */
-void infix2postfix(void);
+int infix2postfix(void);
 
 #endif //CALC_INFIX2POSTFIX_H
