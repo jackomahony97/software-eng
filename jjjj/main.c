@@ -1,7 +1,6 @@
 /**
 * Main acts as an interface to all the components of the calculator
-* @author Jack O Mahony (117498152)
-* @date 13/11/2019
+* @date 26/11/2019
 */
 
 #include <stdio.h>
@@ -36,15 +35,34 @@ int main( )
         result = tokenizer(); /** call tokenizer() */
 	if (result == 0) {
         	result = infix2postfix(); /** call infix2postfix() */
-		if (result == 0) {
-        		result = codegenerator(); /** call codegenerator */
-			if (result == 0) {
-        			result = virtualmachine(); /** call virtualmachine */
-			}
-		}
 	}
+	else {
+		printf("Error in Tokenizer file.");
+		break;
+		}
+	if (result == 0) {
+		result = codegenerator(); /** call codegenerator */
+			}
+	else {
+		printf("Error in Infix2postfix file.");
+		break;
+		}
+	if (result == 0) {
+		result = virtualmachine(); /** call virtualmachine */
+			}
+	else {
+		printf("Error in Code Generator file.");
+		break;
+		}
+	if(result==0) {
+		printf("Calculated. Please check result in ./temp/solutions.txt\n");
+			}
+	else {
+		printf("Error in Virtual Machine file.");
+		break;
+		}
+			
     }
-    printf("%d",result);
     fclose(infile); /** close input file */
     return 0;
 }
