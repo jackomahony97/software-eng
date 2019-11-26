@@ -47,7 +47,7 @@ int priority(char c)
 }
 
 //Main function.
-void infix2postfix()
+int infix2postfix()
 {
     stk.top=-1;
     FILE *infile,*outfile;
@@ -79,6 +79,6 @@ void infix2postfix()
     }
     fclose(infile);
     fclose(outfile);
+    return 0;
 
 }
-
