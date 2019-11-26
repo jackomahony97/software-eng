@@ -10,9 +10,6 @@
 #include "codegenerator.h"
 #include "infix2postfix.h"
 #include "virtualmachine.h"
-#include "tokenizer.h"
-#include "codegenerator.h"
-#include "infix2postfix.h"
 
 
 TESTS {
