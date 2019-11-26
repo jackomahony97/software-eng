@@ -8,7 +8,7 @@
 
 
 TESTS {
-        ok (push(1)==0, "push test");
+        ok (push(1)==0, "push successful test");
         ok (pop(1)!=NULL, "pop successful test");
         ok (pop(2)==NULL, "pop failed test");
         ok (priority('(')==0, "open bracket priority test successful");
