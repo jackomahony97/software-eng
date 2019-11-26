@@ -107,7 +107,7 @@ bool checkSyntax(char line[]){
 
 
 
-void tokenizer(){
+int tokenizer(){
     FILE *infile, *outfile;
     infile = fopen("./temp/input.txt","r");
     outfile = fopen("./temp/tokenizer.txt", "w+");
@@ -123,5 +123,5 @@ void tokenizer(){
     }
     fclose(infile);
     fclose(outfile);
+    return 0;
 }
-
