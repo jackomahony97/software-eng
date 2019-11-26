@@ -12,7 +12,7 @@ The HLT(Halt) instruction will be appended to the end of the output file.
 #include <string.h>
 #include "codegenerator.h"
 
-void codegenerator() {  /* This file comprises of 1 function which translates the input file into a single output file */
+int codegenerator() {  /* This file comprises of 1 function which translates the input file into a single output file */
 
     FILE *infile, *outfile;  /* Initialise input and output files */
     char c[100];  /* Declare maximum token size */
@@ -81,5 +81,5 @@ void codegenerator() {  /* This file comprises of 1 function which translates th
 
     fclose(infile);  /* Close input file */
     fclose(outfile);  /* Close output file */
+    return 0;
 }
-
