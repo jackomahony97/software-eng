@@ -8,6 +8,6 @@
 #define CALC_TOKENIZER_H
 
 /** Method definition */
-void tokenizer(void);
+int tokenizer(void);
 
 #endif //CALC_TOKENIZER_H
