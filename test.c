@@ -12,6 +12,7 @@ TESTS {
 	ok (checker("ADD") != 0, "Invalid instruction");
 	ok (write2file(1.2) == 0, "succesful");
 	ok (eval(1) == 0, "succesful");
+	ok (eval(1) != 0, "unsuccesful");
 }
 
 
