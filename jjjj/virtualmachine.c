@@ -154,7 +154,7 @@ void eval(int instr) {
             float a = stack[sp--]; /** Pop top of stack */
             float b = stack[sp--]; /** Pop top of stack */
             float result = remainder(a, b);
-	        result = result * -1; /** Implement instruction */
+	    result = result * -1; /** Implement instruction */
             sp++; /** Increment stack pointer */
             stack[sp] = result; /** Result goes to top of stack */
             break;
