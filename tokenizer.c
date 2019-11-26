@@ -1,19 +1,10 @@
-/**
-* The Tokenizer program reads an input file with one calculation on the first line,
-* checks the calculation for syntax errors and then prints the calculation to a new
-* file with one 'token' (integer, float, bracket or operator) per line.
-* @author Mark O'Gorman (117333271)
-* @date 13/11/2019
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 
 
-
-bool checkBrackets(char line[]){ // checks that the calculation has an equal number of ( and ) symbols
+bool checkBrackets(char line[]){
     int openBrackets = 0;
     int closeBrackets = 0;
     for(int i = 0; line[i]; i++){
@@ -32,17 +23,17 @@ bool checkBrackets(char line[]){ // checks that the calculation has an equal num
     }
 }
 
-bool checkDecimals(char line[]){ // checks that there is not more than one decimal place in a given float
+bool checkDecimals(char line[]){
     int decimalCount = 0;
     for(int i = 0; line[i]; i++){
-        if (line[i] == '.') { // this indicates that we are inside a float
+        if (line[i] == '.') {
             decimalCount += 1;
-            if (decimalCount >= 2){ // if there are more than one decimals, return false
+            if (decimalCount >= 2){
                 return false;
             }
         }
         else {
-		if (!isdigit(line[i])){ // once we have reached the end of the float, reset the counter
+		if (!isdigit(line[i])){
             		decimalCount = 0;
         	}
 	}
@@ -50,22 +41,16 @@ bool checkDecimals(char line[]){ // checks that there is not more than one decim
     return true;
 }
 
-bool checkOperators(char line[]){ // check that there are no syntax errors caused by adjacent or trailing operator symbols
+bool checkOperators(char line[]){
 
-    if (line[0]== '*'
-        ||line[0]=='/'
-        || line[0] == '%'
-        || line[0] == '^'){
-            return false;
-    }
     for(int i = 0; line[i]; i++){
-        if (line[i] == '+' // if there is an operator symbol..
+        if (line[i] == '+'
             || line[i] == '-'
             || line[i] == '/'
             || line[i] == '*'
             || line[i] == '^'
             || line[i] == '%'){
-            if (!(line[i+1] == '(' // if the operator is not adjacent to a token it can operate on, throw an error
+            if (!(line[i+1] == '('
                 || line[i+1] == ')'
                 || isdigit(line[i+1]))
                 ){
@@ -76,7 +61,7 @@ bool checkOperators(char line[]){ // check that there are no syntax errors cause
     return true;
 }
 
-void removeIllegalChars(char line[]){ // removes characters that the program must ignore, so that they will not interfere with other syntax checks.
+int removeIllegalChars(char line[]){
     int count = 0; // count characters not being kept
     for (int i = 0; line[i]; i++){
         if (line[i] == '+'    // these are the legal characters that will be allowed
@@ -96,9 +81,10 @@ void removeIllegalChars(char line[]){ // removes characters that the program mus
         }
     }
     line[count] = '\0'; // end of line char placed at end of string to be kept
+return 0;
 }
 
-void printTokensToNewLine(char line[], FILE *outfile){ // prints one token (integer, float, operator or bracket) to a new line each of an output file
+void printTokensToNewLine(char line[], FILE *outfile){
     for(int i = 0; line[i]; i++){
             char newline = '\n';
             if (line[i] == '+'
@@ -123,7 +109,7 @@ void printTokensToNewLine(char line[], FILE *outfile){ // prints one token (inte
         }
 }
 
-bool checkSyntax(char line[]){ // runs checks for operators, brackets and decimal place syntax
+bool checkSyntax(char line[]){
     if (checkOperators(line)
         &&checkBrackets(line)
         &&checkDecimals(line)
@@ -138,19 +124,22 @@ bool checkSyntax(char line[]){ // runs checks for operators, brackets and decima
 
 }
 
+// inserts into subject[] at position pos
+void append(char subject[], const char insert[], int pos) {
+    char buf[100] = {}; // 100 so that it's big enough. fill with 0
+    // or you could use malloc() to allocate sufficient space
 
-void append(char subject[], const char insert[], int pos) {// appends the string insert[] into subject[] at position pos
-    char buf[100] = {};
-
-    strncpy(buf, subject, pos);
+    strncpy(buf, subject, pos); // copy at most first pos characters
     int len = strlen(buf);
-    strcpy(buf+len, insert);
-    len += strlen(insert);
-    strcpy(buf+len, subject+pos);
-    strcpy(subject, buf);
+    strcpy(buf+len, insert); // copy all of insert[] at the end
+    len += strlen(insert);  // increase the length by length of insert[]
+    strcpy(buf+len, subject+pos); // copy the rest
+
+    strcpy(subject, buf);   // copy it back to subject
+    // deallocate buf[] here, if used malloc()
 }
 
-void fixDecimals(char line[]){
+int fixDecimals(char line[]){
     char str[] = "0";
     for(int i = 0; line[i]; i++){
         if (line[i] == '.'){
@@ -165,15 +154,17 @@ void fixDecimals(char line[]){
             }
         }
     }
+	return 0;
 }
-void fixFirstOperators(char line[]){ // fixes the case "-200+100" where the first operator in a line indicates the sign of the integer, rather than a function
+int fixFirstOperators(char line[]){ // fixes the case "-200+100" where the first operator in a line indicates the sign of the integer, rather than a function
     char str[] = "0";
     if ((line[0] == '+')||(line[0] == '-')){
             append(line, str, 0);
         }
+	return 0;
     }
 
-void fixBracketMultiplication(char line[]){// inserts '*' between brackets so that they are multiplied appropriately in the code generator
+int fixBracketMultiplication(char line[]){
     char str[] = "*";
     for(int i = 0; line[i]; i++){
         if( (line[i] == ')') && ((line[i+1] == '(') || (isdigit(line[i+1])))){
@@ -183,9 +174,10 @@ void fixBracketMultiplication(char line[]){// inserts '*' between brackets so th
                 append(line, str, i);
         }
     }
+return 0;
 }
 
-int tokenizer(){ // function called by main in order to execute the tokeniser program
+int tokenizer(){
     FILE *infile, *outfile;
     infile = fopen("./temp/input.txt","r");
     outfile = fopen("./temp/tokenizer.txt", "w+");
@@ -210,3 +202,4 @@ int tokenizer(){ // function called by main in order to execute the tokeniser pr
         return 1;
     }
 }
+
