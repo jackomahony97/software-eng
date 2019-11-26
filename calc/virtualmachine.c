@@ -84,7 +84,8 @@ int checker(const char input[]){
     return result;
 }
 
-void write2file(float res) {
+int write2file(float res) {
+
     /**
     * eval writes a parameter res to a file
     * @param res Integer the value to be written to file
@@ -93,13 +94,16 @@ void write2file(float res) {
     FILE *file = fopen ( filename, "w+" ); /** Open file */
     if (res-(int)res == 0) { /** Check if integer */
         fprintf(file, "%d\n", (int)res); /** Write to file (integer)*/
+	printf("%d\n", (int)res);
     } else {
         fprintf(file, "%f\n", res); /** Write to file (float*/
+	printf("%f\n", res);
     }
     fclose(file); /** Close file */
+    return 0;
 }
 
-void eval(int instr) {
+int eval(int instr) {
     /**
      * eval executes a parameter instr via the stack
      * @param instr Integer the type of instruction
@@ -168,6 +172,7 @@ void eval(int instr) {
             break;
         }
     }
+	return 0;
 }
 
 int virtualmachine() {
