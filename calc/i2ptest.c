@@ -1,5 +1,9 @@
+/**
+* The infix2postfix test.
+* @author Hoang Anh Mai (117101156)
+* @date 26/11/2019
+*/
 #include <ctap.h>
-#include <ctype.h>
 #include "infix2postfix.c"
 
 
