@@ -153,7 +153,8 @@ void eval(int instr) {
         case MOD: {
             float a = stack[sp--]; /** Pop top of stack */
             float b = stack[sp--]; /** Pop top of stack */
-            float result = fmod(a, b); /** Implement instruction */
+            float result = remainder(a, b);
+	        result = result * -1; /** Implement instruction */
             sp++; /** Increment stack pointer */
             stack[sp] = result; /** Result goes to top of stack */
             break;
