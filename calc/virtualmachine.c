@@ -1,8 +1,3 @@
-//
-// Created by jacko on 20/11/2019.
-//
-
-
 /**
 * The Virtual Machine program reads an input file of instructions and executes them using a stack and writes the amswer to an output file
 * @author Jack O Mahony (117498152)
