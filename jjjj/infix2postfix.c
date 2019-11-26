@@ -54,7 +54,7 @@ int infix2postfix()
     char expr[60],*e, x,c;
     infile = fopen("./temp/tokenizer.txt","r");
     outfile= fopen("./temp/postfix.txt","w+");
-// If infile is available loop through each character in the file and convert the file to postfix.     
+// If infile is available loop through each character in the file and convert the file to postfix. Return 0 if there is no error.    
     if (infile) {
         while ((c = getc(infile)) != EOF) {
             if ( (isalnum(c)) || (c == '.') ) {
@@ -75,6 +75,7 @@ int infix2postfix()
                 push(c);
             }
         }
+//Pop last item in the stack.
         while (stk.top>-1) {fprintf(outfile,"\n%c", pop());}
     }
     fclose(infile);
