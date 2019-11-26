@@ -1,20 +1,17 @@
 /**
 * Test uses TAP (Test Anyhing Protocal) to test calc
-* @author Jack O Mahony (117498152)
-* @date 13/11/2019
 */
-/*
 #include <ctap.h>
-#include "virtualmachine.h"
-#include "tokenizer.h"
-#include "codegenerator.h"
-#include "infix2postfix.h"
-#include "virtualmachine.h"
+#include "virtualmachine.c"
+#include "math.h"
 
 
 TESTS {
-
-    ok(1 == 1, "1 does in fact equal 1");
+    //vm
+	ok (checker("ADD") == 0, "succesful");
+	ok (checker("ADD") != 0, "Invalid instruction");
+	ok (write2file(1.2) == 0, "succesful");
+	ok (eval(1) == 0, "succesful");
 }
- **/
+
 
