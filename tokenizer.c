@@ -189,6 +189,7 @@ int main(){
         printTokensToNewLine(line, outfile);
         fclose(infile);
         fclose(outfile);
+        return 0;
     }
     else {
         fputs("syntax error", outfile);
