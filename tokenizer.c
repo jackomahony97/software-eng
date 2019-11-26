@@ -173,7 +173,7 @@ void fixBracketMultiplication(char line[]){
     }
 }
 
-int main(){
+int tokenizer(){
     FILE *infile, *outfile;
     infile = fopen("./temp/input.txt","r");
     outfile = fopen("./temp/tokenizer.txt", "w+");
