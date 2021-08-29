@@ -1,7 +1,8 @@
 The calculator will consist of 4 programs: 
 
-1. Tokenizer 2. Infix to Postfix Converter 3. Code Generator 
-4. Virtual Machine Each of these programs will be called from a "Main" program, which will act as the interface between the four system components. The Main takes a file of calculations as input and passes the first line of that file into the first program, the Tokeniser. 
+1. Tokenizer 2. Infix to Postfix Converter 3. Code Generator 4. Virtual Machine 
+
+Each of these programs will be called from a "Main" program, which will act as the interface between the four system components. The Main takes a file of calculations as input and passes the first line of that file into the first program, the Tokeniser. 
 This line is expected to be a calculation eg.“ 1+27(3-4)". 
 
 1. Tokeniser 
