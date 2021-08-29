@@ -1,4 +1,6 @@
-The calculator will consist of 4 programs: 
+This calculator is an exaample of creating independant code blocks that work together harmoniously through a main program.
+
+The calculator consists of 4 programs which are called by the main program.
 
 1. Tokenizer 2. Infix to Postfix Converter 3. Code Generator 4. Virtual Machine 
 
