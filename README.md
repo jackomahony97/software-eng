@@ -50,3 +50,9 @@ Call Code Generator, passing in path to i2pc_file, return instructions which are
 Call Virtual Machine execute instruction_set_file - Integer value returned from Virtual Machine is written to a solution_file (this text file is in the same directory as the codes). Then wipe the files in temp 
 directory Move on to next line. Every step is the same but the result from the VM is appended to solution_file, the file is not overridden.. 
 When the end of the input file is reached, Main will read in solution_file, read through each line and use "stdout" to print out the result. 
+
+Fig. 1. Example of single player game
+![Alt text](dataflowdiagram.png)
+
+Fig. 2. Example of multi-player game
+![Alt text](highlevelarchitecturediagram.png) 
