@@ -52,7 +52,7 @@ directory Move on to next line. Every step is the same but the result from the V
 When the end of the input file is reached, Main will read in solution_file, read through each line and use "stdout" to print out the result. 
 
 Fig. 1. Example of single player game
-![Alt text](dataflowdiagram.png)
+![Alt text](dataflowdiagram.PNG)
 
 Fig. 2. Example of multi-player game
-![Alt text](highlevelarchitecturediagram.png) 
+![Alt text](highlevelarchitecturediagram.PNG) 
